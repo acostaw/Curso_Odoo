@@ -1,0 +1,44 @@
+<odoo>
+<!-- oformi atajo para crear inherit-->
+<record id="partner_instructor_form_view" model="ir.ui.view">
+    <field name="name">partner.instructor</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+        <notebook position="inside">
+            <page string="Sesiones">
+            <group>
+                <field name="instructor"/>
+                <field name="session_ids"/>
+             </group>
+            </page>
+        </notebook>
+    </field>
+</record>
+<!-- oact atajo para un action window-->
+<record id="contact_list_action" model="ir.actions.act_window">
+    <field name="name">Contactos</field>  
+    <field name="res_model">res.partner</field>
+    <field name="view_mode">tree,form</field>
+</record>
+<!-- omenua atajo para crear un menuitem -->
+<menuitem id="configuration_menu" name="Contactos" parent="main_openacademy_menu"/>
+<menuitem id="contact_menu" name="Contactos" parent="configuration_menu" action="contact_list_action" />
+
+
+<!-- OATC -->
+<record id="contact_cat_list_action" model="ir.actions.act_window">
+    <field name="name">Etiqueta de Contacto</field>
+    
+    <field name="res_model">res.partner.category</field>
+    <field name="view_mode">tree,form</field>
+</record>
+<menuitem id="contact_cat_menu" name="Etiquetas de Contactos" parent="configuration_menu" action="contact_cat_list_action" />
+<record model="res.partner.category" id="Profesor1">
+<field name="name">Profesor/Nivel 1</field>
+</record>
+
+<record model="res.partner.category" id="Profesor2">
+<field name="name">Profesor/Nivel 2</field>
+</record>
+</odoo>
